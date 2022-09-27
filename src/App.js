@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useRef, useState } from "react";
+import TaskItem from "./components/TaskItem"
 
-function App() {
+const App = () => {
+
+  const mounted = useRef(false)
+
+  useEffect(() => {
+    if (mounted.current === false){
+      mounted.current = true
+    } else {
+      console.log("updated!")
+    }
+  })
+
+  const [tasks, setTasks] = useState([
+    {
+      id: "1",
+      description: "Estudar Programação",
+      isCompleted: false,
+    },
+    {
+      id: "2",
+      description: "Faculdade",
+      isCompleted: true,
+    }
+  ])
+
+  const handleCleanTasks = () => {
+    setTasks([])
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {tasks.map((task) => (
+        <TaskItem key={task.id} task={task}/>
+      ))}
+      <button onClick={handleCleanTasks}>Limpar tarefas</button>
+    </>
   );
 }
 
