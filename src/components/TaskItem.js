@@ -1,14 +1,4 @@
-import { useEffect } from "react";
-
 const TaskItem = ({ task }) => {
-    useEffect(() => {
-        console.log("mounted")
-
-        return () => {
-            console.log("unmount")
-        }
-    },[])
-
 
     return (
         <>

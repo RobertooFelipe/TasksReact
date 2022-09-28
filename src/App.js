@@ -1,30 +1,25 @@
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 import TaskItem from "./components/TaskItem"
 
 const App = () => {
 
-  const mounted = useRef(false)
+
+  const [tasks, setTasks] = useState([])
+
+  const fatchTasks = async () => {
+    try{
+      const { data } = await axios.get("https://fsc-task-manager-backend.herokuapp.com/tasks")
+      setTasks(data)
+    }catch(err){
+      console.log(err)
+    }
+  }
 
   useEffect(() => {
-    if (mounted.current === false){
-      mounted.current = true
-    } else {
-      console.log("updated!")
-    }
-  })
-
-  const [tasks, setTasks] = useState([
-    {
-      id: "1",
-      description: "Estudar Programação",
-      isCompleted: false,
-    },
-    {
-      id: "2",
-      description: "Faculdade",
-      isCompleted: true,
-    }
-  ])
+    fatchTasks()
+  }, [])
 
   const handleCleanTasks = () => {
     setTasks([])
