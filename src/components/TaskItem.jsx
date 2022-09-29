@@ -33,6 +33,6 @@ const TaskItem = ({ task }) => {
             </div>
         </>
     )
-}
+}// teste
 
 export default TaskItem
