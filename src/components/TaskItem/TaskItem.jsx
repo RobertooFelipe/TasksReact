@@ -4,13 +4,16 @@ import axios from "axios";
 
 import "./TaskItem.scss";
 
-const TaskItem = ({ task }) => {
+const TaskItem = ({ task, fatchTasks }) => {
 
     const alert = useAlert();
 
     const handleTaskDeletion = async () => {
         try{
            await axios.delete(`https://fsc-task-manager-backend.herokuapp.com/tasks/${task._id}`)
+
+           await fatchTasks();
+
            alert.success("Item removido com sucesso!")
         }catch(err){
             alert.error("Algo de errado aconteceu!")
