@@ -1,4 +1,4 @@
-.tasks-container {
+.task-container {
     padding: 60px 85px;
     display: flex;
     flex-direction: column;
@@ -50,7 +50,7 @@
             background: #555;
         }
 
-        .tasks-list {
+        .task-list {
             overflow-y: auto;
             margin-top: 28px;
         }
@@ -60,7 +60,7 @@
         flex: 1;
         padding-top: 28px;
 
-        .tasks-list {
+        .task-list {
             margin-top: 28px;
         }
     }
