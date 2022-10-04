@@ -24,7 +24,7 @@ const Tasks = () => {
   
     useEffect(() => {
       fatchTasks()
-    }, [])
+    })
 
     return ( 
         <div className="task-container">
@@ -38,6 +38,7 @@ const Tasks = () => {
                         .filter(tasks => tasks.isCompleted === false)
                         .map(lastTask => (
                         <TaskItem 
+                          key={lastTask._id}
                           task={lastTask} 
                           fatchTasks={fatchTasks}
                         />
@@ -51,6 +52,7 @@ const Tasks = () => {
                         .filter(tasks => tasks.isCompleted)
                         .map(completedTask => (
                           <TaskItem 
+                            key={completedTask._id}
                             task={completedTask}
                             fatchTasks={fatchTasks}
                           />
