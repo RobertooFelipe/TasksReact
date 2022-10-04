@@ -32,6 +32,8 @@ const AddTask = ({ fatchTasks }) =>{
 
             await fatchTasks();
 
+            await alert.success("A tarefa foi adicionada com sucesso!")
+
         }catch(err){
             alert.error("Algo deu errado!")
         }
