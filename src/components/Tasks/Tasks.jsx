@@ -3,8 +3,8 @@ import axios from "axios";
 
 import "./Tasks.scss"
 
-import TaskItem from './TaskItem'
-import AddTask from "./AddTask";
+import TaskItem from '../TaskItem/TaskItem'
+import AddTask from "../AddTask/AddTask";
 
 const Tasks = () => {
 

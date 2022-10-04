@@ -1,4 +1,4 @@
-import CustomInput from "./CustomInput"
+import CustomInput from "../CustomInput/CustomInput"
 import "./AddTask.scss"
 import { useState } from "react"
 
