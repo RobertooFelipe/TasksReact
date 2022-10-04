@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { useAlert } from "react-alert";
 
@@ -21,6 +21,14 @@ const Tasks = () => {
         await alert.error("Algo de inesperado aconteceu!")
       }
     }
+
+    const lastTask = useMemo(() => {
+      return tasks.filter(tasks => tasks.isCompleted === false)
+    },[tasks])
+
+    const CompletedlastTask = useMemo(() => {
+      return tasks.filter(tasks => tasks.isCompleted === true)
+    },[tasks])
   
     useEffect(() => {
       fatchTasks()
@@ -34,9 +42,7 @@ const Tasks = () => {
                 <h3>Útimas tarefas</h3>
                 <AddTask fatchTasks={fatchTasks} />
                 <div className="task-list">
-                    {tasks
-                        .filter(tasks => tasks.isCompleted === false)
-                        .map(lastTask => (
+                    {lastTask.map(lastTask => (
                         <TaskItem 
                           key={lastTask._id}
                           task={lastTask} 
@@ -48,9 +54,7 @@ const Tasks = () => {
             <div className="completed-tasks">
             <h3>Tarefas concluídas</h3>
                 <div className="task-list">
-                    {tasks
-                        .filter(tasks => tasks.isCompleted)
-                        .map(completedTask => (
+                    {CompletedlastTask.map(completedTask => (
                           <TaskItem 
                             key={completedTask._id}
                             task={completedTask}
