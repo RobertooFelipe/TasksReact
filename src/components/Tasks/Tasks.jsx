@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useAlert } from "react-alert";
 
 import "./Tasks.scss"
 
@@ -8,14 +9,16 @@ import AddTask from "../AddTask/AddTask";
 
 const Tasks = () => {
 
+    const alert = useAlert();
+
     const [tasks, setTasks] = useState([])
 
     const fatchTasks = async () => {
       try{
         const { data } = await axios.get("https://fsc-task-manager-backend.herokuapp.com/tasks")
-        setTasks(data)
-      }catch(err){
-        console.log(err)
+        await setTasks(data)
+      }catch(_err){
+        await alert.error("Algo de inesperado aconteceu!")
       }
     }
   

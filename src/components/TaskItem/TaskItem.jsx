@@ -14,10 +14,9 @@ const TaskItem = ({ task, fatchTasks }) => {
 
            await fatchTasks();
 
-           alert.success("Item removido com sucesso!")
-        }catch(err){
-            alert.error("Algo de errado aconteceu!")
-            console.log(err)
+           await alert.success("Item removido com sucesso!")
+        }catch(_err){
+            await alert.error("Algo de inesperado aconteceu!")
         }    
     }
 
@@ -29,10 +28,9 @@ const TaskItem = ({ task, fatchTasks }) => {
 
             await fatchTasks();
 
-            alert.success("A tarefa foi modificada com sucesso")
-        }catch(err){
-            alert.error("Algo inesperado aconteceu")
-
+            await alert.success("A tarefa foi modificada com sucesso")
+        }catch(_err){
+            await alert.error("Algo inesperado aconteceu")
         }
     }
 
