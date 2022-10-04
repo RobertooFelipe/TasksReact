@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
-// import axios from "axios";
 import { useAlert } from 'react-alert';
+import axios from "axios";
 
 import CustomInput from "../CustomInput/CustomInput"
 import CustomButton from "../CustomButton/CustomButton"
 
 import "./AddTask.scss"
-import axios from "axios";
 
-const AddTask = () =>{
+const AddTask = ({ fatchTasks }) =>{
     const [ task, setTask] = useState("");
 
     const alert = useAlert();
@@ -24,12 +23,17 @@ const AddTask = () =>{
                 return alert.error("A tarefa precisa de uma descrição para ser adicionada!")
             }
 
+            setTask("");
+            
             await axios.post("https://fsc-task-manager-backend.herokuapp.com/tasks", {
                 description: task,
                 isCompleted: false 
             });
-        }catch(err){
 
+            await fatchTasks();
+
+        }catch(err){
+            alert.error("Algo deu errado!")
         }
     }
 
