@@ -3,6 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.31.8",
+    "prettier-config-standard": "^5.0.0",
     "react-scripts": "5.0.1"
   },
   "dependencies": {
@@ -23,7 +31,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint":  "eslint --fix --ext .jsx ."
   },
   "eslintConfig": {
     "extends": [

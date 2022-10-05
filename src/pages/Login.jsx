@@ -5,14 +5,13 @@ import './Login.scss'
 import logo from '../assets/images/logoTasksRobertoo.svg'
 
 const Login = () => {
+  const navigate = useNavigate()
 
-    const navigate = useNavigate();
+  const handleSiginClick = () => {
+    navigate('/')
+  }
 
-    const handleSiginClick = () => {
-        navigate('/')
-    }
-
-    return(
+  return (
         <div className="login-container">
             <img src={logo} alt="Logo Robertoo Felipe Task" />
             <div className="button-container">
@@ -21,7 +20,7 @@ const Login = () => {
                 </CustomButton>
             </div>
         </div>
-    )
+  )
 }
 
-export default Login;
+export default Login

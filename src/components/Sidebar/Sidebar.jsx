@@ -5,14 +5,13 @@ import './Sidebar.scss'
 import logo from '../../assets/images/logoTasksRobertoo.svg'
 
 const Sidebar = () => {
+  const navigate = useNavigate()
 
-    const navigate = useNavigate();
+  const handleLogoutClick = () => {
+    navigate('/login')
+  }
 
-    const handleLogoutClick = () => {
-        navigate('/login')
-    }
-
-    return(
+  return (
         <div className="sidebar-container">
             <div className="logo">
                 <img src={logo} alt="Robertoo Felipe Taks" />
@@ -24,7 +23,7 @@ const Sidebar = () => {
                 </CustomButton>
             </div>
         </div>
-    )
+  )
 }
 
-export default Sidebar;
+export default Sidebar
