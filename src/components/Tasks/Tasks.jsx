@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import axios from "axios";
 import { useAlert } from "react-alert";
 
@@ -13,14 +13,15 @@ const Tasks = () => {
 
     const [tasks, setTasks] = useState([])
 
-    const fatchTasks = async () => {
+    const fatchTasks = useCallback(async () => {
       try{
         const { data } = await axios.get("https://fsc-task-manager-backend.herokuapp.com/tasks")
+
         await setTasks(data)
       }catch(_err){
         await alert.error("Algo de inesperado aconteceu!")
       }
-    }
+    },[alert])
 
     const lastTask = useMemo(() => {
       return tasks.filter(tasks => tasks.isCompleted === false)
@@ -32,7 +33,7 @@ const Tasks = () => {
   
     useEffect(() => {
       fatchTasks()
-    })
+    }, [fatchTasks])
 
     return ( 
         <div className="task-container">
