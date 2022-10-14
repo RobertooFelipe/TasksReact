@@ -14,7 +14,7 @@ const Tasks = () => {
 
   const fatchTasks = useCallback(async () => {
     try {
-      const { data } = await axios.get('https://fsc-task-manager-backend.herokuapp.com/tasks')
+      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/tasks`)
 
       await setTasks(data)
     } catch (_err) {
